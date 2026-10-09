@@ -254,7 +254,7 @@ export const featured: FeaturedProject[] = [
     stack: ["Go", "PostgreSQL", "NATS", "Protobuf / WSS", "React", "Android", "Docker", "Kubernetes", "Cloudflare Tunnel"],
     links: [
       { label: "Visit website", href: "https://agentmeshvpn.vercel.app", primary: true },
-      { label: "Live demo", href: "https://agentmeshvpn.vercel.app/connect" },
+      { label: "Live demo", href: "https://agentmeshvpn.vercel.app/connect?demo=1" },
     ],
   },
 ];
