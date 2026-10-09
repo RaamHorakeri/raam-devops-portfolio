@@ -99,7 +99,7 @@ export default function Nav() {
           scrolled ? "border-b border-white/10 bg-base/80 backdrop-blur-xl" : "border-b border-transparent"
         }`}
       >
-        <nav className="flex h-16 w-full items-center justify-between gap-4 px-4 sm:px-8 lg:px-12 xl:px-16">
+        <nav className="flex h-16 w-full items-center justify-between gap-4 page-x">
           <a href="#about" className="group flex items-center gap-2 font-mono text-sm font-semibold">
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-linear-to-br from-cyan-400 to-emerald-400 text-on-accent">
               RH
@@ -174,7 +174,7 @@ export default function Nav() {
           className="menu-in fixed inset-0 z-60 overflow-y-auto bg-base/97 backdrop-blur-xl"
         >
           <div className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-96" />
-          <div className="relative flex min-h-full w-full flex-col px-4 sm:px-8 lg:px-12 xl:px-16">
+          <div className="relative flex min-h-full w-full flex-col page-x">
             <div className="flex h-16 items-center justify-between">
               <span className="font-mono text-sm text-slate-400">
                 <span className="text-emerald-400">$</span> cd <span className="text-cyan-400">~/sections</span>
@@ -191,7 +191,7 @@ export default function Nav() {
               </button>
             </div>
 
-            <nav className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <nav className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {menu.map((m, i) => {
                 const current = active === (m.section ?? m.id);
                 return (

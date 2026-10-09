@@ -171,3 +171,25 @@ body {
     animation: none;
   }
 }
+
+/*
+ * Full-width element whose content sits in a centered 1200px column.
+ * Side padding is the larger of the responsive gutter and the space needed
+ * to center the column, so left and right margins always match.
+ */
+.page-x {
+  --gutter: 1rem;
+  padding-inline: max(var(--gutter), calc((100% - 1200px) / 2));
+}
+
+@media (min-width: 640px) {
+  .page-x {
+    --gutter: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-x {
+    --gutter: 3rem;
+  }
+}

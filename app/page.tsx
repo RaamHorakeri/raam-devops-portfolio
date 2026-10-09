@@ -88,7 +88,7 @@ export default function Home() {
         </div>
 
         {/* HERO */}
-        <section id="about" className="w-full scroll-mt-20 px-4 pb-20 pt-32 sm:px-8 lg:px-12 xl:px-16 sm:pt-40">
+        <section id="about" className="w-full scroll-mt-20 page-x pb-20 pt-32 sm:pt-40">
           <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
             <div className="fade-up">
               <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
@@ -158,7 +158,7 @@ export default function Home() {
         </section>
 
         {/* SKILLS */}
-        <section id="skills" className="w-full scroll-mt-20 px-4 py-24 sm:px-8 lg:px-12 xl:px-16">
+        <section id="skills" className="w-full scroll-mt-20 page-x py-16 sm:py-20 lg:py-24">
           <SectionHeading
             eyebrow="// tech-stack"
             title="Skills & tools I work with daily"
@@ -168,7 +168,7 @@ export default function Home() {
         </section>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="w-full scroll-mt-20 px-4 py-24 sm:px-8 lg:px-12 xl:px-16">
+        <section id="experience" className="w-full scroll-mt-20 page-x py-16 sm:py-20 lg:py-24">
           <SectionHeading
             eyebrow="// experience"
             title="Where I've worked"
@@ -237,7 +237,7 @@ export default function Home() {
         </section>
 
         {/* PROJECTS */}
-        <section id="projects" className="w-full scroll-mt-20 px-4 py-24 sm:px-8 lg:px-12 xl:px-16">
+        <section id="projects" className="w-full scroll-mt-20 page-x py-16 sm:py-20 lg:py-24">
           <SectionHeading
             eyebrow="// projects"
             title="Featured products"
@@ -250,7 +250,7 @@ export default function Home() {
           </div>
 
           <h3 id="more-projects" className="mb-6 mt-20 scroll-mt-24 text-2xl font-bold tracking-tight text-white">More DevOps work</h3>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
               <article
                 key={p.title}
@@ -304,7 +304,7 @@ export default function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="w-full scroll-mt-20 px-4 py-24 sm:px-8 lg:px-12 xl:px-16">
+        <section id="contact" className="w-full scroll-mt-20 page-x py-16 sm:py-20 lg:py-24">
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cyan-500/15 via-surface to-emerald-500/15 p-8 sm:p-14">
             <div className="bg-grid absolute inset-0 -z-10 opacity-60" />
             <p className="font-mono text-sm text-cyan-400">{"// contact"}</p>
@@ -349,7 +349,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-white/10">
-        <div className="flex w-full flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-8 lg:px-12 xl:px-16">
+        <div className="flex w-full flex-col items-center justify-between gap-3 page-x py-8 text-sm text-slate-500 sm:flex-row">
           <p>© {new Date().getFullYear()} Ramesh Horakeri · DevOps Engineer</p>
           <p className="font-mono">built with Next.js · Tailwind CSS</p>
         </div>
