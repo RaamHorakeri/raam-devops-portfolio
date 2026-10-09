@@ -243,13 +243,13 @@ export default function Home() {
             title="Featured products"
             subtitle="Live platforms in production — what they do, why they're useful and how they work under the hood."
           />
-          <div className="space-y-8">
+          <div id="featured" className="scroll-mt-24 space-y-8">
             {featured.map((p) => (
               <FeaturedProject key={p.name} project={p} />
             ))}
           </div>
 
-          <h3 className="mb-6 mt-20 text-2xl font-bold tracking-tight text-white">More DevOps work</h3>
+          <h3 id="more-projects" className="mb-6 mt-20 scroll-mt-24 text-2xl font-bold tracking-tight text-white">More DevOps work</h3>
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
               <article
@@ -288,7 +288,7 @@ export default function Home() {
           </div>
 
           {/* Education */}
-          <div className="mt-16 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/3 p-7 sm:flex-row sm:items-center">
+          <div id="education" className="mt-16 scroll-mt-24 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/3 p-7 sm:flex-row sm:items-center">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/5 text-emerald-300 ring-1 ring-white/10">
               <Icon name="grad" className="h-6 w-6" />
             </span>
