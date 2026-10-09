@@ -30,7 +30,7 @@ function Terminal() {
     ["grafana", "1/1", "Running"],
   ];
   return (
-    <div className="glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b1020]/90 shadow-2xl shadow-cyan-950/40">
+    <div className="force-dark glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-surface/90 shadow-2xl shadow-cyan-950/40">
       <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-red-400/80" />
         <span className="h-3 w-3 rounded-full bg-amber-400/80" />
@@ -115,7 +115,7 @@ export default function Home() {
               <div className="mt-10 flex flex-wrap gap-3">
                 <a
                   href="#contact"
-                  className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 font-semibold text-[#070a12] shadow-lg shadow-cyan-500/25 transition hover:shadow-cyan-500/50"
+                  className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 font-semibold text-on-accent shadow-lg shadow-cyan-500/25 transition hover:shadow-cyan-500/50"
                 >
                   Get in touch
                   <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
@@ -178,7 +178,7 @@ export default function Home() {
             {jobs.map((job) => (
               <li key={job.company} className="relative">
                 <span
-                  className={`absolute -left-7.75 top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#070a12] sm:-left-11.75 ${
+                  className={`absolute -left-7.75 top-2 h-3.5 w-3.5 rounded-full ring-4 ring-base sm:-left-11.75 ${
                     job.current ? "bg-emerald-400 shadow-[0_0_16px] shadow-emerald-400" : "bg-slate-600"
                   }`}
                 />
@@ -305,7 +305,7 @@ export default function Home() {
 
         {/* CONTACT */}
         <section id="contact" className="w-full scroll-mt-20 px-4 py-24 sm:px-8 lg:px-12 xl:px-16">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cyan-500/15 via-[#0b1020] to-emerald-500/15 p-8 sm:p-14">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cyan-500/15 via-surface to-emerald-500/15 p-8 sm:p-14">
             <div className="bg-grid absolute inset-0 -z-10 opacity-60" />
             <p className="font-mono text-sm text-cyan-400">{"// contact"}</p>
             <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-5xl">
@@ -332,9 +332,9 @@ export default function Home() {
                   key={c.label}
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#070a12]/60 p-5 transition hover:border-cyan-400/50"
+                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-base/60 p-5 transition hover:border-cyan-400/50"
                 >
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-[#070a12]">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-on-accent">
                     <Icon name={c.icon} />
                   </span>
                   <span className="min-w-0">

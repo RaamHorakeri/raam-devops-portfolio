@@ -79,7 +79,7 @@ export default function SkillsTerminal() {
   };
 
   return (
-    <div className="glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b1020]/95 shadow-2xl shadow-cyan-950/40">
+    <div className="force-dark glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-surface/95 shadow-2xl shadow-cyan-950/40">
       {/* Title bar */}
       <div className="flex items-center gap-2 border-b border-white/10 bg-white/2 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-red-400/80" />
