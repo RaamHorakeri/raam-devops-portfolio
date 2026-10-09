@@ -149,3 +149,109 @@ export const education = {
   school: "Visvesvaraya Technological University (VTU)",
   year: "2019",
 };
+
+export type FeaturedProject = {
+  name: string;
+  tagline: string;
+  summary: string;
+  useful: string[];
+  steps: { title: string; text: string }[];
+  features: string[];
+  stack: string[];
+  links: { label: string; href: string; primary?: boolean }[];
+};
+
+export const featured: FeaturedProject[] = [
+  {
+    name: "Infra Hub Center",
+    tagline: "Monitoring, logging and operations. One console.",
+    summary:
+      "A self-hosted infrastructure monitoring and operations platform that brings metrics, logs, database observability, VM patching and access control for VMs, Docker and Kubernetes into a single console.",
+    useful: [
+      "Ends tool sprawl: metrics, logs, SSH access and patching live in one place instead of five dashboards.",
+      "Secure by design: agents connect outbound, so no inbound ports are opened on your servers.",
+      "Self-hosted with fleet-based plans and no per-GB ingest fees, so costs stay predictable.",
+      "Try it risk-free: the live demo is pre-loaded with sample VMs, containers, clusters and databases.",
+    ],
+    steps: [
+      {
+        title: "Install agents",
+        text: "Lightweight agents run on VMs (Linux, Windows, macOS), Docker hosts and inside Kubernetes clusters.",
+      },
+      {
+        title: "Agents dial out",
+        text: "Each agent opens an outbound WebSocket to the Go API, so there are no firewall rules or inbound ports.",
+      },
+      {
+        title: "Collect & store",
+        text: "Metrics, inventory, logs and database performance land in PostgreSQL behind the Go backend.",
+      },
+      {
+        title: "Observe & act",
+        text: "The Next.js console shows live dashboards and alerts; admins patch VMs with controlled reboots and run approved database operations.",
+      },
+      {
+        title: "Stay compliant",
+        text: "Every action passes Project → Group RBAC checks and is written to an append-only audit trail.",
+      },
+    ],
+    features: [
+      "VM, Docker & Kubernetes monitoring",
+      "Real-time log aggregation",
+      "PostgreSQL, MySQL, MongoDB & Redis observability",
+      "VM patch management",
+      "S3 storage monitoring",
+      "Alerting",
+      "RBAC & audit trail",
+    ],
+    stack: ["Go", "Next.js", "PostgreSQL", "WebSocket", "Docker Compose", "Kubernetes", "amd64 / arm64"],
+    links: [
+      { label: "Visit website", href: "https://infrahub-site.vercel.app/", primary: true },
+      { label: "Live demo", href: "https://infrahubcentre.vercel.app/" },
+    ],
+  },
+  {
+    name: "AgentMesh",
+    tagline: "Cross-platform device management & secure remote access.",
+    summary:
+      "A fleet management platform: install a lightweight agent on each device, then manage every Linux, Windows and macOS machine from a web dashboard or Android app. A phone can even route its internet through a trusted computer.",
+    useful: [
+      "Manage devices anywhere, even behind NAT or home routers, without opening a single inbound port.",
+      "Run commands across the fleet safely: they are signed, streamed live and protected against replay.",
+      "Exit-node mode: pair a phone by QR or 6-digit code and browse through your own computer's connection.",
+      "Built for teams: Super Admin, Admin, Operator and Viewer roles with a tamper-evident audit log.",
+    ],
+    steps: [
+      {
+        title: "Enroll a device",
+        text: "Create an enrollment token in the dashboard and install the agent with a one-line installer (.deb, .rpm, Windows Service or launchd).",
+      },
+      {
+        title: "Secure handshake",
+        text: "The agent proves its identity with a P-256 key and receives a short-lived token, after admin approval.",
+      },
+      {
+        title: "Always connected",
+        text: "Agents dial out to the Go control plane over WSS + Protobuf, sending heartbeats and inventory; NATS fans out events.",
+      },
+      {
+        title: "Command & control",
+        text: "Operators run signed commands with live output, cancel and timeouts from the React dashboard or Android app.",
+      },
+      {
+        title: "Phone exit node",
+        text: "The Android app scans a QR code and tunnels the phone's traffic through an agent device, reconnecting automatically.",
+      },
+    ],
+    features: [
+      "Linux, Windows & macOS agents",
+      "Zero inbound ports",
+      "Signed remote commands",
+      "Android control app",
+      "Phone exit node (VPN)",
+      "RBAC & hash-chained audit log",
+    ],
+    stack: ["Go", "PostgreSQL", "NATS", "Protobuf / WSS", "React", "Android", "Docker", "Kubernetes", "Cloudflare Tunnel"],
+    links: [{ label: "Open dashboard", href: "https://agentmesh-hub.vercel.app/login", primary: true }],
+  },
+];

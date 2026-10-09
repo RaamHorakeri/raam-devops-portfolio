@@ -1,7 +1,8 @@
 import Nav from "./components/Nav";
 import Icon from "./components/Icon";
 import SkillsTerminal from "./components/SkillsTerminal";
-import { profile, stats, jobs, projects, education } from "./data";
+import FeaturedProject from "./components/FeaturedProject";
+import { profile, stats, jobs, projects, featured, education } from "./data";
 
 function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
@@ -16,9 +17,15 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: 
 function Terminal() {
   const rows = [
     ["kubernetes", "3/3", "Running"],
+    ["docker", "4/4", "Running"],
+    ["aws", "2/2", "Running"],
     ["terraform", "1/1", "Running"],
+    ["ansible", "1/1", "Running"],
     ["jenkins", "2/2", "Running"],
+    ["gitlab-ci", "2/2", "Running"],
+    ["argocd", "1/1", "Running"],
     ["helm", "1/1", "Running"],
+    ["nginx", "2/2", "Running"],
     ["prometheus", "1/1", "Running"],
     ["grafana", "1/1", "Running"],
   ];
@@ -233,9 +240,16 @@ export default function Home() {
         <section id="projects" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24 sm:px-6">
           <SectionHeading
             eyebrow="// projects"
-            title="Key DevOps projects"
-            subtitle="Highlights from production work and hands-on projects on GitHub."
+            title="Featured products"
+            subtitle="Live platforms in production — what they do, why they're useful and how they work under the hood."
           />
+          <div className="space-y-8">
+            {featured.map((p) => (
+              <FeaturedProject key={p.name} project={p} />
+            ))}
+          </div>
+
+          <h3 className="mb-6 mt-20 text-2xl font-bold tracking-tight text-white">More DevOps work</h3>
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
               <article
