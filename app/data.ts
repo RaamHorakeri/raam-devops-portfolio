@@ -252,6 +252,9 @@ export const featured: FeaturedProject[] = [
       "RBAC & hash-chained audit log",
     ],
     stack: ["Go", "PostgreSQL", "NATS", "Protobuf / WSS", "React", "Android", "Docker", "Kubernetes", "Cloudflare Tunnel"],
-    links: [{ label: "Open dashboard", href: "https://agentmesh-hub.vercel.app/login", primary: true }],
+    links: [
+      { label: "Visit website", href: "https://agentmeshvpn.vercel.app", primary: true },
+      { label: "Live demo", href: "https://agentmeshvpn.vercel.app/connect" },
+    ],
   },
 ];
