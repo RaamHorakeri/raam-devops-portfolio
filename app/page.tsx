@@ -14,20 +14,20 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: 
   );
 }
 
+function Prompt({ cmd }: { cmd: string }) {
+  return (
+    <p>
+      <span className="text-emerald-400">$</span> <span className="text-slate-200">{cmd}</span>
+    </p>
+  );
+}
+
 function Terminal() {
-  const rows = [
-    ["kubernetes", "3/3", "Running"],
-    ["docker", "4/4", "Running"],
-    ["aws", "2/2", "Running"],
-    ["terraform", "1/1", "Running"],
-    ["ansible", "1/1", "Running"],
-    ["jenkins", "2/2", "Running"],
-    ["gitlab-ci", "2/2", "Running"],
-    ["argocd", "1/1", "Running"],
-    ["helm", "1/1", "Running"],
-    ["nginx", "2/2", "Running"],
-    ["prometheus", "1/1", "Running"],
-    ["grafana", "1/1", "Running"],
+  const achievements = [
+    ["deploy-time", "-40%", "enfec"],
+    ["services-automated", "15+", "enfec"],
+    ["deploy-effort", "-35%", "pentagram"],
+    ["release-workflows", "12+", "pentagram"],
   ];
   return (
     <div className="force-dark glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-surface/90 shadow-2xl shadow-cyan-950/40">
@@ -35,40 +35,65 @@ function Terminal() {
         <span className="h-3 w-3 rounded-full bg-red-400/80" />
         <span className="h-3 w-3 rounded-full bg-amber-400/80" />
         <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
-        <span className="ml-3 font-mono text-xs text-slate-500">ramesh@prod-cluster: ~</span>
+        <span className="ml-3 font-mono text-xs text-slate-500">ramesh@career-cluster: ~</span>
       </div>
       <div className="overflow-x-auto p-5 font-mono text-[13px] leading-7">
-        <p>
-          <span className="text-emerald-400">$</span> <span className="text-slate-200">whoami</span>
-        </p>
+        <Prompt cmd="whoami" />
         <p className="text-slate-400">ramesh-horakeri · devops-engineer · {profile.experience}</p>
-        <p className="mt-3">
-          <span className="text-emerald-400">$</span>{" "}
-          <span className="text-slate-200">kubectl get skills -n devops</span>
-        </p>
-        <table className="mt-1 w-full text-left">
+
+        <div className="mt-3">
+          <Prompt cmd="kubectl get jobs -n career" />
+        </div>
+        <table className="mt-1 w-full whitespace-nowrap text-left">
           <thead className="text-slate-500">
             <tr>
               <th className="pr-6 font-normal">NAME</th>
-              <th className="pr-6 font-normal">READY</th>
-              <th className="font-normal">STATUS</th>
+              <th className="hidden pr-6 font-normal sm:table-cell">ROLE</th>
+              <th className="pr-6 font-normal">STATUS</th>
+              <th className="font-normal">AGE</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map(([name, ready, status]) => (
-              <tr key={name}>
-                <td className="pr-6 text-cyan-300">{name}</td>
-                <td className="pr-6 text-slate-300">{ready}</td>
-                <td className="text-emerald-400">{status}</td>
+            {jobs.map((job) => (
+              <tr key={job.company}>
+                <td className="pr-6 text-cyan-300">{job.company.split(" ")[0].toLowerCase()}</td>
+                <td className="hidden pr-6 text-slate-300 sm:table-cell">{job.role}</td>
+                <td className={`pr-6 ${job.current ? "text-emerald-400" : "text-slate-400"}`}>
+                  {job.current ? "Running" : "Completed"}
+                </td>
+                <td className="text-slate-300">{job.duration}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <p className="mt-3">
-          <span className="text-emerald-400">$</span> <span className="text-slate-200">deploy --env=prod</span>
-        </p>
+
+        <div className="mt-3">
+          <Prompt cmd="kubectl get achievements -n career" />
+        </div>
+        <table className="mt-1 w-full whitespace-nowrap text-left">
+          <thead className="text-slate-500">
+            <tr>
+              <th className="pr-6 font-normal">NAME</th>
+              <th className="pr-6 font-normal">VALUE</th>
+              <th className="font-normal">JOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            {achievements.map(([name, value, job]) => (
+              <tr key={name}>
+                <td className="pr-6 text-cyan-300">{name}</td>
+                <td className="pr-6 font-semibold text-emerald-400">{value}</td>
+                <td className="text-slate-400">{job}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="mt-3">
+          <Prompt cmd="kubectl rollout status deploy/next-role" />
+        </div>
         <p className="text-emerald-400">
-          ✔ rollout complete in 40% less time<span className="cursor ml-1 inline-block h-4 w-2 translate-y-0.5 bg-cyan-400" />
+          ✔ ready · open to new opportunities<span className="cursor ml-1 inline-block h-4 w-2 translate-y-0.5 bg-cyan-400" />
         </p>
       </div>
     </div>
