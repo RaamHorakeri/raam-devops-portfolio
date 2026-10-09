@@ -1,297 +1,370 @@
-export default function Home() {
-  const skills = {
-    Cloud: ["AWS", "Azure", "DigitalOcean"],
-    DevOps: [
-      "Docker",
-      "Kubernetes",
-      "Helm",
-      "ArgoCD",
-      "Terraform",
-      "Ansible",
-    ],
-    CICD: ["Jenkins", "GitLab CI/CD", "GitHub Actions"],
-    Monitoring: ["Prometheus", "Grafana", "Loki", "Promtail"],
-    Tools: [
-      "GitHub",
-      "GitLab",
-      "Bitbucket",
-      "Nginx",
-      "Linux",
-      "Shell Scripting",
-    ],
-  }
+import Nav from "./components/Nav";
+import Icon from "./components/Icon";
+import { profile, stats, skills, jobs, projects, education } from "./data";
 
-  const projects = [
-    {
-      title: "Kubernetes Managed Metrics System",
-      description:
-        "Built complete CI/CD pipeline using Jenkins, Docker, Kubernetes, Helm and AWS EKS with rolling updates and auto scaling.",
-      github: "https://github.com/RaamHorakeri",
-      live: "https://your-project-url.vercel.app",
-    },
-    {
-      title: "Cloud Native DevOps Pipeline",
-      description:
-        "Implemented secure CI/CD with SonarQube, Trivy, Docker, Kubernetes, Prometheus and Grafana monitoring.",
-      github: "https://github.com/RaamHorakeri",
-      live: "https://your-project-url.vercel.app",
-    },
-    {
-      title: "Docker Cleanup Automation",
-      description:
-        "Automated cleanup of unused Docker images, containers, networks and cache using Jenkins pipelines.",
-      github: "https://github.com/RaamHorakeri",
-      live: "https://your-project-url.vercel.app",
-    },
-    {
-      title: "GitOps Deployment Automation",
-      description:
-        "Managed Kubernetes deployments using ArgoCD, Helm and GitOps workflows for DEV, QA and PROD environments.",
-      github: "https://github.com/RaamHorakeri",
-      live: "https://your-project-url.vercel.app",
-    },
-  ]
-
+function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
-    <main className="bg-black text-white min-h-screen">
-      {/* HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-green-400 text-lg font-semibold">
-              DevOps Engineer / Site Reliability Engineer
-            </p>
+    <div className="mb-12 max-w-2xl">
+      <p className="font-mono text-sm text-cyan-400">{eyebrow}</p>
+      <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-slate-400">{subtitle}</p>}
+    </div>
+  );
+}
 
-            <h1 className="text-5xl md:text-7xl font-bold mt-4 leading-tight">
-              Ramesh
-              <span className="text-green-400"> Horakeri</span>
-            </h1>
+function Terminal() {
+  const rows = [
+    ["kubernetes", "3/3", "Running"],
+    ["terraform", "1/1", "Running"],
+    ["jenkins", "2/2", "Running"],
+    ["helm", "1/1", "Running"],
+    ["prometheus", "1/1", "Running"],
+    ["grafana", "1/1", "Running"],
+  ];
+  return (
+    <div className="glow-card relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b1020]/90 shadow-2xl shadow-cyan-950/40">
+      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+        <span className="h-3 w-3 rounded-full bg-red-400/80" />
+        <span className="h-3 w-3 rounded-full bg-amber-400/80" />
+        <span className="h-3 w-3 rounded-full bg-emerald-400/80" />
+        <span className="ml-3 font-mono text-xs text-slate-500">ramesh@prod-cluster: ~</span>
+      </div>
+      <div className="overflow-x-auto p-5 font-mono text-[13px] leading-7">
+        <p>
+          <span className="text-emerald-400">$</span> <span className="text-slate-200">whoami</span>
+        </p>
+        <p className="text-slate-400">ramesh-horakeri · devops-engineer · {profile.experience}</p>
+        <p className="mt-3">
+          <span className="text-emerald-400">$</span>{" "}
+          <span className="text-slate-200">kubectl get skills -n devops</span>
+        </p>
+        <table className="mt-1 w-full text-left">
+          <thead className="text-slate-500">
+            <tr>
+              <th className="pr-6 font-normal">NAME</th>
+              <th className="pr-6 font-normal">READY</th>
+              <th className="font-normal">STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(([name, ready, status]) => (
+              <tr key={name}>
+                <td className="pr-6 text-cyan-300">{name}</td>
+                <td className="pr-6 text-slate-300">{ready}</td>
+                <td className="text-emerald-400">{status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="mt-3">
+          <span className="text-emerald-400">$</span> <span className="text-slate-200">deploy --env=prod</span>
+        </p>
+        <p className="text-emerald-400">
+          ✔ rollout complete in 40% less time<span className="cursor ml-1 inline-block h-4 w-2 translate-y-0.5 bg-cyan-400" />
+        </p>
+      </div>
+    </div>
+  );
+}
 
-            <p className="mt-8 text-gray-300 text-lg leading-8">
-              DevOps Engineer with 5+ years of experience in CI/CD automation,
-              Kubernetes, Docker, Cloud Infrastructure and Monitoring Solutions.
-              Specialized in building scalable cloud-native infrastructure and
-              deployment automation.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mt-10">
-              <a
-                href="https://github.com/RaamHorakeri"
-                target="_blank"
-                className="bg-green-500 hover:bg-green-600 transition px-6 py-3 rounded-xl font-semibold text-black"
-              >
-                GitHub
-              </a>
-
-              <a
-                href="mailto:raamuhbaliganur@gmail.com"
-                className="border border-green-500 px-6 py-3 rounded-xl hover:bg-green-500 hover:text-black transition"
-              >
-                Contact Me
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800 shadow-2xl">
-            <h2 className="text-3xl font-bold mb-8 text-green-400">
-              Quick Overview
-            </h2>
-
-            <div className="space-y-5 text-lg">
-              <div className="flex justify-between border-b border-zinc-700 pb-3">
-                <span className="text-gray-400">Experience</span>
-                <span>5+ Years</span>
-              </div>
-
-              <div className="flex justify-between border-b border-zinc-700 pb-3">
-                <span className="text-gray-400">Specialization</span>
-                <span>DevOps & SRE</span>
-              </div>
-
-              <div className="flex justify-between border-b border-zinc-700 pb-3">
-                <span className="text-gray-400">Cloud Platforms</span>
-                <span>AWS • Azure • DO</span>
-              </div>
-
-              <div className="flex justify-between border-b border-zinc-700 pb-3">
-                <span className="text-gray-400">Containers</span>
-                <span>Docker • Kubernetes</span>
-              </div>
-
-              <div className="flex justify-between border-b border-zinc-700 pb-3">
-                <span className="text-gray-400">CI/CD</span>
-                <span>Jenkins • ArgoCD</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-gray-400">OS</span>
-                <span>Linux</span>
-              </div>
-            </div>
-          </div>
+export default function Home() {
+  return (
+    <>
+      <Nav />
+      <main className="relative overflow-hidden">
+        {/* Background */}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="bg-grid absolute inset-x-0 top-0 h-225" />
+          <div className="absolute -top-40 left-1/2 h-150 w-225 -translate-x-1/2 rounded-full bg-cyan-500/15 blur-[120px]" />
+          <div className="absolute right-0 top-350 h-125 w-125 rounded-full bg-emerald-500/10 blur-[120px]" />
         </div>
-      </section>
 
-      {/* SKILLS */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold mb-12">
-          Technical <span className="text-green-400">Skills</span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Object.entries(skills).map(([category, items]) => (
-            <div
-              key={category}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6"
-            >
-              <h3 className="text-2xl font-semibold mb-6 text-green-400">
-                {category}
-              </h3>
-
-              <div className="flex flex-wrap gap-3">
-                {items.map((item) => (
-                  <span
-                    key={item}
-                    className="bg-zinc-800 px-4 py-2 rounded-full text-sm"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold mb-12">
-          Professional <span className="text-green-400">Experience</span>
-        </h2>
-
-        <div className="space-y-8">
-          <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-              <div>
-                <h3 className="text-2xl font-bold">
-                  Enfec Solution Pvt. Ltd.
-                </h3>
-                <p className="text-green-400 mt-2">DevOps Engineer</p>
-              </div>
-
-              <span className="mt-4 md:mt-0 text-gray-400">
-                Oct 2024 - Present
+        {/* HERO */}
+        <section id="about" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-20 pt-32 sm:px-6 sm:pt-40">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+            <div className="fade-up">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Open to new opportunities
               </span>
-            </div>
 
-            <ul className="mt-6 space-y-3 text-gray-300 leading-7 list-disc pl-5">
-              <li>Designed CI/CD pipelines using Jenkins and ArgoCD.</li>
-              <li>Managed Kubernetes clusters with Helm and Rancher.</li>
-              <li>
-                Implemented monitoring using Grafana, Loki and Prometheus.
-              </li>
-              <li>Configured Nginx reverse proxy and SSL automation.</li>
-              <li>Automated server operations using shell scripting.</li>
-            </ul>
-          </div>
-
-          <div className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-              <div>
-                <h3 className="text-2xl font-bold">Glintsoft Infotech</h3>
-                <p className="text-green-400 mt-2">DevOps Engineer</p>
-              </div>
-
-              <span className="mt-4 md:mt-0 text-gray-400">
-                Feb 2020 - Jun 2024
-              </span>
-            </div>
-
-            <ul className="mt-6 space-y-3 text-gray-300 leading-7 list-disc pl-5">
-              <li>Built CI/CD pipelines using Jenkins and GitLab CI/CD.</li>
-              <li>Migrated applications to Docker-based microservices.</li>
-              <li>Managed Kubernetes workloads and namespaces.</li>
-              <li>
-                Implemented infrastructure provisioning using Terraform.
-              </li>
-              <li>Automated operations using Bash scripting.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-4xl font-bold mb-12">
-          Featured <span className="text-green-400">Projects</span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="bg-zinc-900 rounded-2xl p-8 border border-zinc-800 hover:border-green-500 transition hover:scale-105 duration-300"
-            >
-              <h3 className="text-2xl font-bold mb-4 text-green-400">
-                {project.title}
-              </h3>
-
-              <p className="text-gray-300 leading-8">
-                {project.description}
+              <h1 className="mt-6 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+                Ramesh <span className="text-gradient">Horakeri</span>
+              </h1>
+              <p className="mt-4 font-mono text-lg text-slate-300">
+                {profile.role} <span className="text-slate-600">|</span> {profile.experience} experience
+              </p>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+                I build and run reliable cloud infrastructure — automating CI/CD with{" "}
+                <span className="text-slate-200">Jenkins & GitLab</span>, shipping to{" "}
+                <span className="text-slate-200">Kubernetes with Helm</span>, and keeping production observable with{" "}
+                <span className="text-slate-200">Prometheus, Grafana & Loki</span> across AWS, Azure and DigitalOcean.
               </p>
 
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="mt-10 flex flex-wrap gap-3">
                 <a
-                  href={project.github}
-                  target="_blank"
-                  className="bg-green-500 text-black px-5 py-2 rounded-xl font-semibold hover:bg-green-400 transition"
+                  href="#contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-cyan-400 to-emerald-400 px-6 py-3 font-semibold text-[#070a12] shadow-lg shadow-cyan-500/25 transition hover:shadow-cyan-500/50"
                 >
-                  View CI/CD Setup
+                  Get in touch
+                  <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
                 </a>
-
                 <a
-                  href={project.live}
+                  href={profile.github}
                   target="_blank"
-                  className="border border-green-500 px-5 py-2 rounded-xl hover:bg-green-500 hover:text-black transition"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white transition hover:border-white/30 hover:bg-white/10"
                 >
-                  Access Project
+                  <Icon name="github" className="h-4 w-4" />
+                  GitHub
+                </a>
+                <a
+                  href="#experience"
+                  className="inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold text-slate-300 transition hover:text-white"
+                >
+                  View experience
                 </a>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* CONTACT */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="bg-green-500 rounded-3xl p-10 text-black text-center">
-          <h2 className="text-4xl font-bold">
-            Let's Build Reliable Infrastructure
-          </h2>
-
-          <p className="mt-6 text-lg">
-            Experienced in cloud infrastructure, Kubernetes, CI/CD automation
-            and monitoring solutions.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-5 mt-10">
-            <a
-              href="mailto:raamuhbaliganur@gmail.com"
-              className="bg-black text-white px-6 py-3 rounded-xl font-semibold"
-            >
-              Email Me
-            </a>
-
-            <a
-              href="https://github.com/RaamHorakeri"
-              target="_blank"
-              className="border border-black px-6 py-3 rounded-xl font-semibold"
-            >
-              View GitHub
-            </a>
+            <div className="fade-up [animation-delay:150ms]">
+              <Terminal />
+            </div>
           </div>
+
+          <dl className="mt-20 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="rounded-2xl border border-white/10 bg-white/3 p-6 text-center transition hover:border-cyan-400/40 hover:bg-white/5"
+              >
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="text-gradient text-4xl font-bold">{s.value}</dd>
+                <dd className="mt-2 text-sm text-slate-400">{s.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        {/* SKILLS */}
+        <section id="skills" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24 sm:px-6">
+          <SectionHeading
+            eyebrow="// tech-stack"
+            title="Skills & tools I work with daily"
+            subtitle="From provisioning infrastructure to routing traffic and watching it in production."
+          />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {skills.map((group, i) => (
+              <div
+                key={group.title}
+                className={`group rounded-2xl border border-white/10 bg-white/3 p-6 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/5 ${
+                  i === skills.length - 1 ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 ring-1 ring-cyan-400/20 transition group-hover:bg-cyan-400/20">
+                    <Icon name={group.icon} />
+                  </span>
+                  <h3 className="font-semibold text-white">{group.title}</h3>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-md border border-white/10 bg-[#0b1020] px-2.5 py-1 font-mono text-xs text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* EXPERIENCE */}
+        <section id="experience" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24 sm:px-6">
+          <SectionHeading
+            eyebrow="// experience"
+            title="Where I've worked"
+            subtitle="4+ years across product companies, running pipelines and clusters from dev to production."
+          />
+          <ol className="relative space-y-10 border-l border-white/10 pl-6 sm:pl-10">
+            {jobs.map((job) => (
+              <li key={job.company} className="relative">
+                <span
+                  className={`absolute -left-7.75 top-2 h-3.5 w-3.5 rounded-full ring-4 ring-[#070a12] sm:-left-11.75 ${
+                    job.current ? "bg-emerald-400 shadow-[0_0_16px] shadow-emerald-400" : "bg-slate-600"
+                  }`}
+                />
+                <article className="rounded-2xl border border-white/10 bg-white/3 p-6 transition hover:border-white/20 sm:p-8">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">{job.role}</h3>
+                      <p className="mt-1 text-cyan-300">{job.company}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {job.current && (
+                        <span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-xs font-medium text-emerald-300 ring-1 ring-emerald-400/30">
+                          Current
+                        </span>
+                      )}
+                      <span className="rounded-full bg-white/5 px-3 py-1 font-mono text-xs text-slate-400">
+                        {job.period}
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul className="mt-6 space-y-3">
+                    {job.highlights.map((h) => (
+                      <li key={h} className="flex gap-3 text-slate-300">
+                        <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+                        <span className="leading-7">{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {job.achievements && (
+                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                      {job.achievements.map((a) => (
+                        <div
+                          key={a.text}
+                          className="flex items-center gap-4 rounded-xl border border-emerald-400/20 bg-emerald-400/6 p-4"
+                        >
+                          <span className="text-gradient text-3xl font-bold">{a.value}</span>
+                          <span className="text-sm leading-6 text-slate-300">{a.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-6 flex flex-wrap gap-2 border-t border-white/5 pt-5">
+                    {job.stack.map((t) => (
+                      <span key={t} className="font-mono text-xs text-slate-500">
+                        #{t.toLowerCase().replace(/\s+/g, "-")}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* PROJECTS */}
+        <section id="projects" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24 sm:px-6">
+          <SectionHeading
+            eyebrow="// projects"
+            title="Key DevOps projects"
+            subtitle="Highlights from production work and hands-on projects on GitHub."
+          />
+          <div className="grid gap-5 md:grid-cols-2">
+            {projects.map((p) => (
+              <article
+                key={p.title}
+                className="glow-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/3 p-7 transition hover:-translate-y-1 hover:border-cyan-400/40"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-linear-to-br from-cyan-400/20 to-emerald-400/20 text-cyan-300 ring-1 ring-white/10">
+                    <Icon name={p.icon} className="h-6 w-6" />
+                  </span>
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-slate-400 transition hover:text-white"
+                    >
+                      GitHub <Icon name="external" className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+                <h3 className="mt-6 text-xl font-semibold text-white">{p.title}</h3>
+                <p className="mt-3 flex-1 leading-7 text-slate-400">{p.description}</p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-200 ring-1 ring-cyan-400/20"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Education */}
+          <div className="mt-16 flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/3 p-7 sm:flex-row sm:items-center">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/5 text-emerald-300 ring-1 ring-white/10">
+              <Icon name="grad" className="h-6 w-6" />
+            </span>
+            <div className="flex-1">
+              <p className="font-mono text-xs text-cyan-400">{"// education"}</p>
+              <h3 className="mt-1 font-semibold text-white">{education.degree}</h3>
+              <p className="text-slate-400">{education.school}</p>
+            </div>
+            <span className="self-start rounded-full bg-white/5 px-3 py-1 font-mono text-xs text-slate-400 sm:self-center">
+              {education.year}
+            </span>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-24 sm:px-6">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-cyan-500/15 via-[#0b1020] to-emerald-500/15 p-8 sm:p-14">
+            <div className="bg-grid absolute inset-0 -z-10 opacity-60" />
+            <p className="font-mono text-sm text-cyan-400">{"// contact"}</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-5xl">
+              Let&apos;s build reliable infrastructure together.
+            </h2>
+            <p className="mt-5 max-w-xl text-slate-300">
+              Looking for a DevOps engineer for Kubernetes, CI/CD, cloud or observability work? I&apos;d love to hear
+              from you.
+            </p>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: "mail", label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+                { icon: "phone", label: "Phone", value: profile.phone, href: profile.phoneHref },
+                {
+                  icon: "github",
+                  label: "GitHub",
+                  value: `@${profile.githubHandle}`,
+                  href: profile.github,
+                  external: true,
+                },
+              ].map((c) => (
+                <a
+                  key={c.label}
+                  href={c.href}
+                  {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-[#070a12]/60 p-5 transition hover:border-cyan-400/50"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 transition group-hover:bg-cyan-400 group-hover:text-[#070a12]">
+                    <Icon name={c.icon} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-xs text-slate-500">{c.label}</span>
+                    <span className="block truncate font-medium text-white">{c.value}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/10">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-6">
+          <p>© {new Date().getFullYear()} Ramesh Horakeri · DevOps Engineer</p>
+          <p className="font-mono">built with Next.js · Tailwind CSS</p>
         </div>
-      </section>
-    </main>
-  )
+      </footer>
+    </>
+  );
 }
