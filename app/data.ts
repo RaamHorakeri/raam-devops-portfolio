@@ -19,25 +19,33 @@ export const stats = [
 ];
 
 export const skills = [
-  { title: "Cloud Platforms", icon: "cloud", items: ["AWS", "Azure", "DigitalOcean"] },
-  { title: "CI/CD & DevOps", icon: "pipeline", items: ["Jenkins", "GitLab CI/CD", "GitHub", "Git"] },
-  { title: "Containers & Orchestration", icon: "container", items: ["Docker", "Kubernetes", "Helm"] },
-  { title: "Infrastructure as Code", icon: "code", items: ["Terraform", "Ansible", "Shell Scripting"] },
-  { title: "Monitoring & Observability", icon: "chart", items: ["Prometheus", "Grafana", "Loki"] },
-  { title: "Networking", icon: "network", items: ["NGINX", "DNS", "SSL/TLS", "Load Balancers", "Reverse Proxy"] },
-  {
-    title: "Kubernetes",
-    icon: "wheel",
-    items: ["Ingress", "Gateway API", "Cilium", "Kong", "RBAC", "HPA", "PVC", "ConfigMaps", "Secrets"],
-  },
-  { title: "AWS Services", icon: "server", items: ["EC2", "EKS", "VPC", "IAM", "S3", "CloudWatch"] },
-  { title: "Operating Systems", icon: "terminal", items: ["Linux", "Ubuntu", "Red Hat"] },
-  {
-    title: "Protocols & Ops",
-    icon: "bolt",
-    items: ["gRPC", "WebSocket", "API Gateway", "Production Troubleshooting"],
-  },
-] as const;
+  { category: "Cloud Platforms", tools: ["AWS", "Microsoft Azure", "DigitalOcean"] },
+  { category: "Operating Systems", tools: ["Linux", "Ubuntu", "Windows Server"] },
+  { category: "Version Control", tools: ["Git", "GitHub", "GitLab", "Bitbucket"] },
+  { category: "CI/CD", tools: ["Jenkins", "GitLab CI/CD"] },
+  { category: "Build Tools", tools: ["Maven", "npm", "pip", "Go (go build, Go modules)"] },
+  { category: "Containerization", tools: ["Docker", "Docker Compose"] },
+  { category: "Container Orchestration", tools: ["Kubernetes", "OpenShift"] },
+  { category: "Package Management", tools: ["Helm Charts"] },
+  { category: "Infrastructure as Code", tools: ["Terraform"] },
+  { category: "Configuration Management", tools: ["Ansible"] },
+  { category: "Scripting", tools: ["Bash", "Shell Scripting"] },
+  { category: "Monitoring & Visualization", tools: ["Prometheus", "Grafana"] },
+  { category: "Logging", tools: ["Loki"] },
+  { category: "Code Quality", tools: ["SonarQube"] },
+  { category: "Security & Vulnerability Scanning", tools: ["Trivy"] },
+  { category: "Artifact Management", tools: ["JFrog Artifactory"] },
+  { category: "Web Servers & Reverse Proxy", tools: ["Nginx"] },
+  { category: "API Gateway & Traffic Routing", tools: ["Cilium Gateway API", "Kong", "Envoy Gateway"] },
+  { category: "GitOps & Deployment Management", tools: ["Argo CD"] },
+  { category: "DNS & SSL/TLS", tools: ["DNS configuration", "Let's Encrypt", "cert-manager", "TLS certificates"] },
+  { category: "Cloud Storage", tools: ["Amazon S3", "Object Storage"] },
+  { category: "Databases", tools: ["PostgreSQL", "MongoDB"] },
+  { category: "Networking", tools: ["Load Balancers", "Ingress", "HTTP/HTTPS", "gRPC", "WebSockets"] },
+  { category: "Collaboration & Ticketing", tools: ["Jira", "Microsoft Teams"] },
+  { category: "Cloud & Cluster CLI Tools", tools: ["AWS CLI", "Azure CLI", "doctl", "kubectl", "Helm CLI"] },
+  { category: "AI-Assisted DevOps", tools: ["MCP", "AI-powered automation"] },
+];
 
 export type Job = {
   company: string;

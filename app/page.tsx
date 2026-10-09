@@ -1,6 +1,7 @@
 import Nav from "./components/Nav";
 import Icon from "./components/Icon";
-import { profile, stats, skills, jobs, projects, education } from "./data";
+import SkillsTerminal from "./components/SkillsTerminal";
+import { profile, stats, jobs, projects, education } from "./data";
 
 function SectionHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle?: string }) {
   return (
@@ -154,35 +155,9 @@ export default function Home() {
           <SectionHeading
             eyebrow="// tech-stack"
             title="Skills & tools I work with daily"
-            subtitle="From provisioning infrastructure to routing traffic and watching it in production."
+            subtitle="Pick a category or scroll the manifest. Everything from provisioning infrastructure to routing traffic and watching it in production."
           />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skills.map((group, i) => (
-              <div
-                key={group.title}
-                className={`group rounded-2xl border border-white/10 bg-white/3 p-6 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/5 ${
-                  i === skills.length - 1 ? "lg:col-span-2" : ""
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-cyan-400/10 text-cyan-300 ring-1 ring-cyan-400/20 transition group-hover:bg-cyan-400/20">
-                    <Icon name={group.icon} />
-                  </span>
-                  <h3 className="font-semibold text-white">{group.title}</h3>
-                </div>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-md border border-white/10 bg-[#0b1020] px-2.5 py-1 font-mono text-xs text-slate-300"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <SkillsTerminal />
         </section>
 
         {/* EXPERIENCE */}
